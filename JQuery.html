@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQuery</title>
+</head>
+<style>
+.open {
+    width:50px;
+    margin: 10px 0;
+    padding: 10px;
+    background:blueviolet;
+    cursor: pointer;
+}
+#slideBox {
+    display:none;
+    padding: 10px;
+    border: 1px solid rgb(34, 44, 184);
+}
+    .deleteBox {
+  border: rgb(255, 54, 54) 1px solid;
+  padding: 10px;
+}
+.deleteBox .delete {
+  cursor: pointer;
+  color: rgb(136, 9, 179);
+  margin-top:10px;
+}
+body {
+  font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Meiryo,"メイリオ",Helvetica,Sans-Serif;
+}
+</style>
+<body>
+        <p class="open">ボタン</p>
+        <div id="slideBox">
+        スライドパネルのサンプルです。ボタンを押すと閉じたり、開いたりします。
+        </div>
+        <br>
+        <h1>アコーディオンメニュー</h1>
+        <dl id="accordion">
+                <dt><a href="">メニュー1</a></dt>
+                <dd>
+                    <a href="#">こんな</a>
+                    <a href="#">感じで</a>
+                </dd>
+                <dt><a href="">メニュー2</a></dt>
+                <dd>
+                    <a href="#">メニュー</a>
+                    <a href="#">ごとの</a>
+                </dd>
+                <dt><a href="">メニュー3</a></dt>
+                <dd>
+                    <a href="#">サブメニューが</a>
+                    <a href="#">出てくるよ</a>
+                </dd>
+            </dl>
+            <br>
+            <h1>デリートボックス</h1>
+            <div class="deleteBox">
+                    <p>エラーメッセージ表示時に便利かもしれません。</p>
+                    <p class="delete">[ 閉じる ]</p>
+                  </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+        <script>
+        $(function(){
+    $(".open").click(function(){
+        $("#slideBox").slideToggle("slow");
+    });
+});
+        </script>
+        <script>
+        $(function() {
+    $('#accordion dd').hide();
+    $('#accordion dt a').click(function(){
+         $('#accordion dd').slideUp();
+         $(this).parent().next().slideDown();
+         return false;
+     });
+});
+        </script>
+    <script>
+    $(function () {
+    $(".deleteBox .delete").click(function(){
+        $(this).parents(".deleteBox").animate({ opacity: "hide" }, "slow"); 
+    });
+});
+    </script>
+
+    <p>引用元<a href="http://happymondays.pecori.jp/jquery-sample/#">http://happymondays.pecori.jp/jquery-sample/#</a></p>
+
+</body>
+</html>
